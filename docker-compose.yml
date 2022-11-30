@@ -11,6 +11,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=auth-db
+      - POSTGRES_PORT=5432
     ports:
       - 5432:5432
 
@@ -25,6 +26,33 @@ services:
       - PORT=3000
     ports:
       - 3000:3000
+
+  cip-db:
+    image: postgres:11
+    container_name: cip-db
+    restart: always
+    networks:
+      - sgq-network
+    environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=cip-db
+      - POSTGRES_PORT=5433
+    ports:
+      - 5433:5432
+
+  cip-api:
+    build: "./cip"
+    container_name: cip-api
+    depends_on:
+      - cip-db
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3001
+    ports:
+      - 3001:3001
 
 networks:
   sgq-network:
