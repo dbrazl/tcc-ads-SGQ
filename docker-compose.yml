@@ -118,6 +118,16 @@ services:
     ports:
       - 3005:3005
 
+  ra-api:
+    build: "./ra"
+    container_name: ra-api
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3006
+    ports:
+      - 3006:3006
+
 networks:
   sgq-network:
     driver: bridge
