@@ -11,7 +11,6 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=auth-db
-      - POSTGRES_PORT=5432
     ports:
       - 5432:5432
 
@@ -24,6 +23,10 @@ services:
       - sgq-network
     environment:
       - PORT=3000
+      - POSTGRES_HOST=auth-db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=auth-db
     ports:
       - 3000:3000
 
@@ -51,6 +54,10 @@ services:
       - sgq-network
     environment:
       - PORT=3001
+      - POSTGRES_HOST=cip-db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=cip-db
     ports:
       - 3001:3001
 
@@ -77,6 +84,7 @@ services:
       - sgq-network
     environment:
       - PORT=3002
+      - MONGO_URL=mongodb://cpa-db:27017/cpa-db
     ports:
       - 3002:3002
 
