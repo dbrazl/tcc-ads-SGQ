@@ -98,6 +98,16 @@ services:
     ports:
       - 3003:3003
 
+  bi-api:
+    build: "./bi"
+    container_name: bi-api
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3004
+    ports:
+      - 3004:3004
+
 networks:
   sgq-network:
     driver: bridge
