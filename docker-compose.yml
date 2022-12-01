@@ -80,6 +80,16 @@ services:
     ports:
       - 3002:3002
 
+  dt-api:
+    build: "./dt"
+    container_name: dt-api
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3003
+    ports:
+      - 3003:3003
+
 networks:
   sgq-network:
     driver: bridge

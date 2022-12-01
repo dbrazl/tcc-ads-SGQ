@@ -3,5 +3,5 @@ WORKDIR .
 COPY package*.json ./
 RUN yarn
 COPY . .
-EXPOSE 3000
+EXPOSE 3002
 CMD ["yarn", "start"]
