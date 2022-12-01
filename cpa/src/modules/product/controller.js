@@ -56,7 +56,7 @@ class ProductController {
           description: "O administrador da empilhareira durrubou as chapas de aço T4571"
         };
 
-        await axios.post('http://localhost:3001/production/problem', body, {
+        await axios.post('http://cip-api:3001/production/problem', body, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
