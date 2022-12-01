@@ -54,6 +54,32 @@ services:
     ports:
       - 3001:3001
 
+  cpa-db:
+    image: mongo
+    container_name: cpa-db
+    restart: always
+    networks:
+      - sgq-network
+    environment:
+      - MONGODB_USER=admin
+      - MONGODB_DATABASE=cpa-db
+      - MONGODB_PASSWORD=123456
+    ports:
+      - 27017:27017
+      - 28017:28017
+
+  cpa-api:
+    build: "./cpa"
+    container_name: cpa-api
+    depends_on:
+      - cpa-db
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3002
+    ports:
+      - 3002:3002
+
 networks:
   sgq-network:
     driver: bridge
