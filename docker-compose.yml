@@ -108,6 +108,16 @@ services:
     ports:
       - 3004:3004
 
+  c-api:
+    build: "./c"
+    container_name: c-api
+    networks:
+      - sgq-network
+    environment:
+      - PORT=3005
+    ports:
+      - 3005:3005
+
 networks:
   sgq-network:
     driver: bridge
